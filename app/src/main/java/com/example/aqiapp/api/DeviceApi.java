@@ -12,6 +12,6 @@ public interface DeviceApi {
     @GET("devices")
     Call<List<Device>> getDevices();
 
-    @GET("Data7day/")
-    Call<List<Data>> getDataByNodeId(@Query("NodeId") String nodeId, @Query("Time") Integer time);
+    @GET("Data7day")
+    Call<List<Data>> getDataByNodeId(@Query("NodeId") String nodeId);
 }

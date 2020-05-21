@@ -3,6 +3,7 @@ package com.example.aqiapp.api.object;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Device {
@@ -21,7 +22,7 @@ public class Device {
     private Integer title;
 
     @Expose
-    private List<Data> data;
+    private List<Data> data = new ArrayList<>();
 
     public Device(Double altitude, Double latitude, Double longitude, String nodeId, String reverseGeocode, Integer title) {
         this.altitude = altitude;
