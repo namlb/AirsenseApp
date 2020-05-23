@@ -14,7 +14,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.aqiapp.R;
 import com.example.aqiapp.api.object.Device;
-import com.example.aqiapp.databinding.DeviceFragmentBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +24,6 @@ public class DeviceFragment extends Fragment{
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        DeviceFragmentBinding binding = DataBindingUtil.setContentView(this, R.layout.device_fragment);
         View root = inflater.inflate(R.layout.device_fragment, container, false);
         final ListView listView = root.findViewById(R.id.list);
         deviceViewModel = new ViewModelProvider(this).get(DeviceViewModel.class);
@@ -34,9 +32,7 @@ public class DeviceFragment extends Fragment{
             public void onChanged(List<Device> devices) {
                 final List<String> list = new ArrayList<>();
                 for (Device device: devices) {
-                    String info = device.getData().size() > 0 ? device.getData().get(0).getTime().toString() : "no data";
-                    list.add(device.getNodeId() + "-"+info);
-                    System.out.println(device.toString());
+                    list.add(device.getNodeId());
                 }
                 ArrayAdapter<String> itemsAdapter =
                         new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, list);
