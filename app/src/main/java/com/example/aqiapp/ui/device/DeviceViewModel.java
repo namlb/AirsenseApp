@@ -1,4 +1,4 @@
-package com.example.aqiapp.ui.Device;
+package com.example.aqiapp.ui.device;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;

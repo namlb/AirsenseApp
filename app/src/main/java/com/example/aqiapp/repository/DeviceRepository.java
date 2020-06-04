@@ -73,7 +73,6 @@ public class DeviceRepository {
                     System.out.println("Time of data: "+response.body().get(0).getTime());
                     data.add(response.body().get(0));
                     device.setData(data);
-                    System.out.println("fff");
                 }
             }
 
