@@ -1,7 +1,7 @@
 package com.example.aqiapp.api;
 
-import com.example.aqiapp.api.object.Data;
-import com.example.aqiapp.api.object.Device;
+import com.example.aqiapp.model.Data;
+import com.example.aqiapp.model.Device;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.GET;

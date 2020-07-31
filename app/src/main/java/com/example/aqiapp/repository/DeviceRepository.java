@@ -3,8 +3,8 @@ package com.example.aqiapp.repository;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.aqiapp.api.DeviceApi;
-import com.example.aqiapp.api.object.Data;
-import com.example.aqiapp.api.object.Device;
+import com.example.aqiapp.model.Data;
+import com.example.aqiapp.model.Device;
 
 import java.util.ArrayList;
 import java.util.List;
