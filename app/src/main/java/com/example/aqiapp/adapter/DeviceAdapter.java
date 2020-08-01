@@ -1,6 +1,7 @@
 package com.example.aqiapp.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.aqiapp.R;
 import com.example.aqiapp.model.Device;
+import com.example.aqiapp.ui.device.EditDeviceActivity;
 
 import java.util.List;
 
@@ -54,7 +56,6 @@ public class DeviceAdapter extends BaseAdapter {
         }
 
         TextView nodeId = (TextView) convertView.findViewById(R.id.nodeId);
-        ImageView imageView = (ImageView) convertView.findViewById(R.id.status);
         final LinearLayout linearLayout = (LinearLayout) convertView.findViewById(R.id.idLinearLayout);
         final Device device = devices.get(position);
 
@@ -64,7 +65,9 @@ public class DeviceAdapter extends BaseAdapter {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(context, EditDeviceActivity.class);
+                intent.putExtra("nodeId", device.getNodeId());
+                context.startActivity(intent);
             }
         });
 
