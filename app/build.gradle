@@ -52,4 +52,7 @@ dependencies {
     annotationProcessor 'com.google.dagger:dagger-compiler:2.27'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
     implementation 'com.google.android.gms:play-services-maps:16.1.0'
+    implementation 'org.osmdroid:osmdroid-android:6.1.0'
+    implementation 'org.slf4j:slf4j-api:1.7.30'
+    implementation 'uk.uuid.slf4j:slf4j-android:1.7.30-0'
 }
