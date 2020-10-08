@@ -59,21 +59,20 @@ public class HomeFragment extends Fragment {
             @Override
             public void onChanged(List<Aqi> aqis) {
                 for(Aqi aqi:aqis) {
-                    addMaker(aqi.getLat(), aqi.getLon());
+                    addMaker(aqi);
                 }
             }
         });
 
         moveToPosition(21.0005, 105.002);
-        addMaker(21.0005, 105.002);
         return root;
     }
 
-    public void addMaker(double lat, double lon) {
-        GeoPoint startPoint = new GeoPoint(lat, lon);
+    public void addMaker(Aqi aqi) {
+        GeoPoint startPoint = new GeoPoint(aqi.getLat(), aqi.getLon());
         Marker startMarker = new Marker(mMapView);
         startMarker.setPosition(startPoint);
-        startMarker.setIcon(writeOnDrawable(R.drawable.green, "30"));
+        startMarker.setIcon(writeOnDrawable(R.drawable.green, Integer.toString(Math.round(aqi.getAqi()))));
         startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
         mMapView.getOverlays().add(startMarker);
     }
