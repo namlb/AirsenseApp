@@ -55,4 +55,20 @@ dependencies {
     implementation 'org.osmdroid:osmdroid-android:6.1.0'
     implementation 'org.slf4j:slf4j-api:1.7.30'
     implementation 'uk.uuid.slf4j:slf4j-android:1.7.30-0'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+}
+
+buildscript {
+    repositories {
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
 }

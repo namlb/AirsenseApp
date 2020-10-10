@@ -1,5 +1,7 @@
 package com.example.aqiapp.ui.home;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -11,16 +13,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.aqiapp.R;
 import com.example.aqiapp.api.object.Aqi;
 import com.example.aqiapp.api.object.Device;
+import com.example.aqiapp.custom.MyMarker;
+import com.example.aqiapp.ui.DetailFragment;
 import com.example.aqiapp.ui.device.DeviceViewModel;
 
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
@@ -31,13 +39,18 @@ import org.osmdroid.views.overlay.Marker;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class HomeFragment extends Fragment {
 
     private HomeViewModel model;
     private MapView mMapView;
     private MapController mMapController;
+    private Map<Marker, Aqi> markerAqiMap = new HashMap<Marker, Aqi>();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -74,7 +87,19 @@ public class HomeFragment extends Fragment {
         startMarker.setPosition(startPoint);
         startMarker.setIcon(writeOnDrawable(R.drawable.green, Integer.toString(Math.round(aqi.getAqi()))));
         startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+        this.markerAqiMap.put(startMarker, aqi);
         mMapView.getOverlays().add(startMarker);
+        startMarker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker, MapView mapView) {
+                Aqi a = markerAqiMap.get(marker);
+                Intent intent = new Intent(getContext(), DetailActivity.class);
+                assert a != null;
+                intent.putExtra("id", a.getId());
+                startActivity(intent);
+                return true;
+            }
+        });
     }
 
     public void moveToPosition(double lat, double lon) {

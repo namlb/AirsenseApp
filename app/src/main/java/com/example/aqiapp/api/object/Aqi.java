@@ -1,10 +1,13 @@
 package com.example.aqiapp.api.object;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 
 public class Aqi {
     @SerializedName("station_id")
-    private long id;
+    @NonNull
+    private String id;
     @SerializedName("lat")
     private double lat;
     @SerializedName("lon")
@@ -15,11 +18,11 @@ public class Aqi {
     public Aqi() {
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
